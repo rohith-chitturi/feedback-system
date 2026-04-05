@@ -1,35 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Register</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Feedback Portal - Register</title>
+  <meta name="description" content="Register to submit anonymous feedback for faculty">
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <div class="nav"><span class="logo">Feedback <span>System</span></span></div>
+  <div class="nav"><div class="logo">Feedback<span>System</span></div></div>
   <div class="auth-page">
     <section class="auth-card glass">
-      <h2>Register</h2>
+      <h2>Create Account</h2>
       <form id="registerForm">
-        <label for="rollNumber">Roll Number</label>
-        <input type="text" id="rollNumber" required pattern="160123737[0-9]{3,6}|1601237373[0-9]{2,3}" />
-        <label for="password">Password</label>
-        <input type="password" id="password" required />
-        <label for="section">Section</label>
-        <select id="section" required>
-          <option value="">Select Section</option>
-          <option value="IT-1">IT-1</option>
-          <option value="IT-2">IT-2</option>
-          <option value="IT-3">IT-3</option>
-        </select>
+        <div class="form-group">
+          <label for="rollNumber">Roll Number</label>
+          <input type="text" id="rollNumber" placeholder="e.g. 160123737000" pattern="160123737[0-9]{3,6}|1601237373[0-9]{2,3}" required />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="Create a strong password" required />
+        </div>
+        <div class="form-group">
+          <label for="section">Section</label>
+          <select id="section" required>
+            <option value="" disabled selected>Select Section</option>
+            <option value="IT-1">IT-1</option>
+            <option value="IT-2">IT-2</option>
+            <option value="IT-3">IT-3</option>
+          </select>
+        </div>
         <div class="form-actions">
           <button type="submit" class="big-btn">Register</button>
-          <a href="index.html" class="link-btn">Already registered? Login</a>
+          <a href="index.html" class="link-btn">Already registered? Log In</a>
         </div>
       </form>
       <div id="status"></div>
     </section>
     <aside class="auth-aside glass">
-      <p>Create an account to give feedback for your faculty and labs. Secure and simple process!</p>
+      <h3>Join the Platform</h3>
+      <p>Register your account to participate in the periodic feedback evaluations. Your identity is kept strictly confidential within the submission process.</p>
     </aside>
   </div>
   <script src="js/auth.js"></script>

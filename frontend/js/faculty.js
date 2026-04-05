@@ -1,4 +1,4 @@
-const API_BASE = 'http://localhost:5000';
+const API_BASE = 'http://cbit-it-feedback.ap-south-1.elasticbeanstalk.com/';
 const section = localStorage.getItem('section');
 
 // Demo avatar images
@@ -58,4 +58,10 @@ function showFacCards(subType) {
   await fetchFaculties();
   document.getElementById('showTheory').onclick = () => showFacCards("theory");
   document.getElementById('showLabs').onclick = () => showFacCards("lab");
+
+  // Logout Logic
+  document.getElementById('logoutBtn')?.addEventListener('click', () => {
+    localStorage.clear();
+    window.location = 'index.html';
+  });
 })();

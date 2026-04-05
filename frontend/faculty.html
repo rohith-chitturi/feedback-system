@@ -1,42 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Select Faculty</title>
+  <meta name="description" content="Select faculty for evaluation">
   <link rel="stylesheet" href="css/style.css" />
-  <style>
-    .select-row {text-align:center;margin:50px auto;}
-    .select-btn {
-      background:linear-gradient(90deg,#a272ff,#f86eed);color:#fff;
-      font-weight:700;font-size:1.18rem;
-      padding:18px 42px;border-radius:14px;border:none;box-shadow:0 6px 24px #cd8cff70;margin:24px 20px;
-      cursor:pointer;transition:transform .18s;
-      animation:fadein 0.6s;
-    }
-    .select-btn:hover {transform:scale(1.06);}
-    .faculty-grid {display:grid;grid-template-columns:1fr 1fr;gap:23px;margin-top:30px;}
-    .faculty-card { /* ...as before... */ }
-    .faculty-img {
-      width:72px;height:72px;border-radius:50%;object-fit:cover;
-      box-shadow:0 2px 9px #cf8cff44;border:2px solid var(--accent2);
-      background: #c0b6e2;
-    }
-    .faculty-name {margin-top:11px;font-size:1.23rem;font-weight:600;color:var(--accent);}
-    .faculty-subject {margin-top:7px;font-size:1.03rem;color:#e7ddff;}
-    .cardfadeout {animation: fadeout .6s linear;}
-    @keyframes fadeout { to { opacity:0; transform:scale(0.9); }}
-    @keyframes fadein { from {opacity:0;} to {opacity:1;}}
-  </style>
 </head>
 <body>
-  <div class="nav"><span class="logo">Feedback <span>System</span></span></div>
-  <div class="select-row" id="chooseType">
-    <button class="select-btn" id="showTheory">Theory</button>
-    <button class="select-btn" id="showLabs">Labs</button>
+  <div class="nav">
+    <div class="logo">Feedback<span>System</span></div>
+    <button id="logoutBtn" class="logout-btn">Logout</button>
   </div>
-  <div id="facultySection" style="display:none;">
-    <h2 style="text-align:center;letter-spacing:2px;">Choose Faculty</h2>
-    <div class="faculty-grid" id="facultyGrid"></div>
+  
+  <div class="container-page" style="display: block;">
+    <div class="select-row" id="chooseType">
+      <button class="big-btn" id="showTheory" style="min-width: 200px;">Theory Classes</button>
+      <button class="big-btn" id="showLabs" style="min-width: 200px; background: linear-gradient(135deg, #3b82f6, #06b6d4);">Lab Sessions</button>
+    </div>
+
+    <div id="facultySection" style="display:none; animation: slideUpFade 0.5s ease forwards;">
+      <h2 style="text-align:center; font-size: 2.5rem; margin-top: 2rem;">Choose Faculty</h2>
+      <p style="text-align:center; color: var(--text-muted); margin-bottom: 2rem;">Select the faculty member you wish to evaluate</p>
+      <div class="faculty-grid" id="facultyGrid"></div>
+    </div>
   </div>
+
   <script src="js/faculty.js"></script>
 </body>
 </html>

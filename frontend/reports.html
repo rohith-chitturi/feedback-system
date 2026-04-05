@@ -1,222 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Feedback Reports</title>
+  <meta name="description" content="View feedback statistics and reports">
   <link rel="stylesheet" href="css/style.css" />
-  <style>
-    body {
-      background: linear-gradient(110deg, #170639 0%, #723aff 100%);
-      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
-      margin: 0; padding: 0;
-      min-height: 100vh;
-    }
-    .nav {
-      background: linear-gradient(90deg, #3b1857, #723aff 100%);
-      color: #f2e4ff;
-      font-size: 2.05rem;
-      font-weight: 700;
-      padding: 19px 0 16px 0;
-      letter-spacing: 2.5px;
-      box-shadow: 0 4px 16px #6b36b880;
-      text-align: center;
-      position: sticky;
-      top: 0;
-      z-index: 8;
-    }
-    .nav .logo span { color: #a272ff;}
-    .admin-page {
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      gap: 40px;
-      padding: 3vw 0 6vw 0;
-      min-height: 80vh;
-    }
-    aside.sidebar {
-      background: linear-gradient(120deg, #31244f 80%, #723aff20 100%);
-      border-radius: 17px;
-      box-shadow: 0 2px 12px #a272ff2f;
-      padding: 31px 26px;
-      margin-top: 30px;
-      min-width: 240px;
-      text-align: center;
-    }
-    aside.sidebar h3 {
-      font-size: 1.13rem;
-      color: #cf8cff;
-      margin-bottom: 14px;
-      font-weight: 700;
-      letter-spacing: 1.3px;
-      text-shadow: 0 1px 8px #cf8cff42;
-    }
-    .big-btn {
-      background: linear-gradient(92deg, #7a4fff, #cf8cff 85%);
-      color: #fff;
-      font-weight: 700;
-      border: none;
-      border-radius: 8px;
-      padding: 12px 28px;
-      font-size: 1.14rem;
-      margin-bottom: 16px;
-      box-shadow: 0 3px 18px #a272ff2c;
-      cursor: pointer;
-      transition: transform 0.18s;
-      width: 100%;
-      max-width: 205px;
-    }
-    .big-btn:hover {
-      transform: scale(1.05);
-      background: linear-gradient(92deg, #cf8cff, #7a4fff 75%);
-      box-shadow: 0 8px 35px #cf8cff33;
-    }
-    section.admin-content {
-      width: 100%;
-      max-width: 950px;
-      border-radius: 24px;
-      box-shadow: 0 12px 60px #cf8cff1d;
-      background: linear-gradient(120deg, #211237 70%, #361d5b 100%);
-      padding: 32px 36px 44px 36px;
-      margin-bottom: 46px;
-      min-height: 75vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .chart-card {
-      background: linear-gradient(135deg, rgba(170,82,255,0.13), rgba(60,0,100,0.17));
-      border-radius: 20px;
-      box-shadow: 0 8px 40px #a272ff33, 0 2px 10px #231032;
-      padding: 25px 14px 36px 14px;
-      margin-bottom: 34px;
-      width: 410px;
-      max-width: 95vw;
-      text-align: center;
-      position: relative;
-      animation: fadein .7s;
-    }
-    .chart-card h3 {
-      font-size: 1.22rem;
-      font-weight: 700;
-      margin-bottom: 13px;
-      background: linear-gradient(90deg, #a272ff, #f86eed);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      letter-spacing: 1px;
-      text-shadow: 0 2px 11px #cf8cff88;
-    }
-    #ratingsPieChart {
-      margin: 0 auto;
-      display: block;
-      background: linear-gradient(120deg, #211237 60%, #361d5b 100%);
-      border-radius: 50%;
-      box-shadow: 0 7px 29px #a272ff33;
-      width: 215px;
-      height: 215px;
-    }
-    .chart-labels {
-      margin-top: 18px;
-      font-size: 1.02rem;
-      color: #b0a4cf;
-      letter-spacing:0.6px;
-      display: flex;
-      justify-content: center;
-      gap:22px;
-      flex-wrap: wrap;
-    }
-    .chart-labels span {
-      display: flex; align-items:center; gap:7px;
-      font-weight: 570;
-      padding: 7px 19px;
-      background: rgba(170,82,255,0.13);
-      border-radius: 12px;
-      box-shadow: 0 2px 8px #a272ff22;
-      color: var(--accent);
-      font-size: 1.06rem;
-    }
-    h2 {
-      margin-top: 24px;
-      margin-bottom: 10px;
-      font-size: 1.33rem;
-      color: var(--accent);
-      letter-spacing: 1.2px;
-      text-shadow: 0 2px 9px #784ca644;
-      text-align: center;
-    }
-    .table {
-      width: 99%;
-      background: #2f1b4b;
-      border-radius: 19px;
-      border-collapse: separate;
-      border-spacing: 0;
-      margin-top: 22px;
-      box-shadow: 0 7px 22px #a272ff37;
-      overflow: hidden;
-      font-size: 1.03rem;
-    }
-    .table th, .table td {
-      padding: 12px 16px;
-      text-align: left;
-      background: none;
-      color: #edeafc;
-    }
-    .table th {
-      background: linear-gradient(90deg,#a272ff44,#cf8cff22);
-      font-weight: bold;
-      color: #a272ff;
-      letter-spacing: 1.2px;
-      border-bottom: 2px solid #cf8cff28;
-      border-radius: 0;
-    }
-    .table tr:nth-child(even) td {
-      background: rgba(122, 76, 255, 0.09);
-    }
-    @keyframes fadein { from {opacity:0;} to {opacity:1;}}
-    @media (max-width: 1100px) {
-      section.admin-content { width: 97vw; max-width: none; padding: 5vw 1vw;}
-      .admin-page {flex-direction: column; align-items:center;}
-      aside.sidebar {min-width:unset; width:95vw; margin-bottom: 35px;}
-      .chart-card { width: 98vw; max-width: 96vw;}
-    }
-  </style>
 </head>
 <body>
-  <div class="nav"><span class="logo">Feedback <span>System</span></span></div>
-  <section class="admin-page">
+  <div class="nav">
+    <div class="logo">Feedback<span>System</span></div>
+    <button id="logoutBtn" class="logout-btn">Logout</button>
+  </div>
+  <div class="admin-page">
     <aside class="sidebar glass">
-      <h3>Export Reports</h3>
-      <button id="exportExcel" class="big-btn">Export to Excel</button>
+      <h3>Admin Dashboard</h3>
+      <p>Analyze and export detailed feedback reports across different sections.</p>
+      <button id="exportExcel" class="big-btn" style="margin-top: 1rem;">Export to Excel</button>
       <button id="exportPDF" class="big-btn">Export to PDF</button>
     </aside>
     <section class="admin-content glass report-section">
       <div class="chart-card glass">
-        <h3>Feedback Ratings Breakdown</h3>
-        <canvas id="ratingsPieChart" width="215" height="215"></canvas>
+        <h3>Performance Breakdown</h3>
+        <canvas id="ratingsPieChart" width="250" height="250"></canvas>
         <div class="chart-labels">
-          <span style="color:#783cbe;">Poor</span>
-          <span style="color:#a272ff;">Fair</span>
-          <span style="color:#cf8cff;">Good</span>
-          <span style="color:#ff66d8;">Very Good</span>
-          <span style="color:#e7ddff;">Excellent</span>
+          <span style="color:var(--danger); border-color:var(--danger);">Poor</span>
+          <span style="color:#f59e0b; border-color:#f59e0b;">Fair</span>
+          <span style="color:var(--accent-2); border-color:var(--accent-2);">Good</span>
+          <span style="color:#a855f7; border-color:#a855f7;">Very Good</span>
+          <span style="color:var(--success); border-color:var(--success);">Excellent</span>
         </div>
       </div>
-      <!-- Table of Feedback -->
-      <h2>All Feedback Submissions</h2>
-      <table class="table" id="feedbackTable">
-        <thead>
-          <tr>
-            <th>Student</th>
-            <th>Section</th>
-            <th>Faculty</th>
-            <th>Subject</th>
-            <th>Rating</th>
-            <th>Comments</th>
-            <th>Date</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
+      <h2 style="align-self: flex-start;">Feedback Submissions</h2>
+      <div style="overflow-x: auto; width: 100%;">
+        <table class="table" id="feedbackTable">
+          <thead>
+            <tr>
+              <th>Student</th>
+              <th>Section</th>
+              <th>Faculty</th>
+              <th>Subject</th>
+              <th>Rating</th>
+              <th>Comments</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
     </section>
-  </section>
+  </div>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="js/reports.js"></script>
 </body>

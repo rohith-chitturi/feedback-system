@@ -1,4 +1,4 @@
-const API_BASE = 'http://localhost:5000';
+const API_BASE = 'http://cbit-it-feedback.ap-south-1.elasticbeanstalk.com/';
 
 const rollNumber = localStorage.getItem('rollNumber');
 const section = localStorage.getItem('section');
@@ -64,4 +64,10 @@ document.getElementById('feedbackForm').addEventListener('submit', async e => {
     document.getElementById('status').innerText =
       res.ok ? 'Feedback submitted!' : data || 'Error submitting feedback.';
   }
+});
+
+// Logout Logic
+document.getElementById('logoutBtn')?.addEventListener('click', () => {
+  localStorage.clear();
+  window.location = 'index.html';
 });

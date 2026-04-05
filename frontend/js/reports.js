@@ -1,4 +1,4 @@
-const API_BASE = 'http://localhost:5000';
+const API_BASE = 'http://cbit-it-feedback.ap-south-1.elasticbeanstalk.com/';
 
 // Pie chart for ratings (1–5)
 function drawPieChart(feedbacks) {
@@ -65,4 +65,10 @@ document.getElementById('exportExcel')?.addEventListener('click', () => {
 });
 document.getElementById('exportPDF')?.addEventListener('click', () => {
   window.open(`${API_BASE}/api/reports/pdf`, '_blank');
+});
+
+// Logout Logic
+document.getElementById('logoutBtn')?.addEventListener('click', () => {
+  localStorage.clear();
+  window.location = 'index.html';
 });

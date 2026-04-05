@@ -1,29 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Student Feedback Portal - Login</title>
+  <meta name="description" content="Login to submit anonymous feedback for faculty">
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <div class="nav"><span class="logo">Feedback <span>System</span></span></div>
+  <div class="nav"><div class="logo">Feedback<span>System</span></div></div>
   <div class="auth-page">
     <section class="auth-card glass">
-      <h2>Login</h2>
+      <h2>Welcome Back</h2>
       <form id="loginForm">
-        <label for="rollNumber">Roll Number</label>
-        <input type="text" id="rollNumber" pattern="160123737[0-9]{3,6}|1601237373[0-9]{2,3}" required />
-        <label for="password">Password</label>
-        <input type="password" id="password" required />
+        <div class="form-group">
+          <label for="rollNumber">Roll Number</label>
+          <input type="text" id="rollNumber" placeholder="e.g. 160123737000" pattern="160123737[0-9]{3,6}|1601237373[0-9]{2,3}" required />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="Enter your password" required />
+        </div>
         <div class="form-actions">
-          <button type="submit" class="big-btn">Login</button>
-          <a href="register.html" class="link-btn">Don’t have account? Register</a>
+          <button type="submit" class="big-btn">Sign In</button>
+          <a href="register.html" class="link-btn">Create Account</a>
         </div>
       </form>
       <div id="status"></div>
     </section>
     <aside class="auth-aside glass">
-      <h3>Welcome!</h3>
-      <p>Login using your Roll Number and Section to submit feedback for your faculty and labs. A modern, secure system for quality improvement.</p>
+      <h3>Student Portal</h3>
+      <p>Access the feedback system using your verified Roll Number. Your honest feedback is crucial for maintaining and improving the quality of education.</p>
     </aside>
   </div>
   <script src="js/auth.js"></script>

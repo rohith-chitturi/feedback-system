@@ -1,34 +1,58 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Submit Feedback</title>
+  <meta name="description" content="Submit anonymous feedback for faculty">
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <div class="nav"><span class="logo">Feedback <span>System</span></span></div>
+  <div class="nav">
+    <div class="logo">Feedback<span>System</span></div>
+    <button id="logoutBtn" class="logout-btn">Logout</button>
+  </div>
   <div class="feedback-page">
     <section class="feedback-card glass">
-      <h2>Submit Feedback</h2>
+      <h2>Evaluation Form</h2>
       <form id="feedbackForm">
-        <label for="rollNumber">Roll Number</label>
-        <input type="text" id="rollNumber" disabled />
-        <label for="section">Section</label>
-        <input type="text" id="section" disabled />
-        <label for="faculty">Faculty</label>
-        <select id="faculty" required></select>
-        <label for="subject">Class Type/Subject</label>
-        <select id="subject" required></select>
-        <label for="rating">Rating</label>
-        <select id="rating" required>
-          <option value="">Select</option>
-          <option value="1">1 - Poor</option>
-          <option value="2">2 - Fair</option>
-          <option value="3">3 - Good</option>
-          <option value="4">4 - Very Good</option>
-          <option value="5">5 - Excellent</option>
-        </select>
-        <label for="comments">Comments</label>
-        <textarea id="comments" maxlength="256"></textarea>
+        <div style="display: flex; gap: 1.5rem;">
+          <div class="form-group" style="flex: 1;">
+            <label for="rollNumber">Roll Number</label>
+            <input type="text" id="rollNumber" disabled />
+          </div>
+          <div class="form-group" style="flex: 1;">
+            <label for="section">Section</label>
+            <input type="text" id="section" disabled />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="faculty">Faculty</label>
+          <select id="faculty" required>
+            <option value="">Select Faculty</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="subject">Class Type/Subject</label>
+          <select id="subject" required>
+            <option value="">Select Subject/Class Type</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="rating">Performance Rating</label>
+          <select id="rating" required>
+            <option value="" disabled selected>Rate out of 5</option>
+            <option value="1">1 - Poor</option>
+            <option value="2">2 - Fair</option>
+            <option value="3">3 - Good</option>
+            <option value="4">4 - Very Good</option>
+            <option value="5">5 - Excellent</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="comments">Comments & Suggestions</label>
+          <textarea id="comments" maxlength="256" placeholder="Constructive feedback to help improve the teaching quality..."></textarea>
+        </div>
         <div class="form-actions">
           <button type="submit" class="big-btn">Submit Feedback</button>
         </div>
@@ -36,7 +60,8 @@
       <div id="status"></div>
     </section>
     <aside class="feedback-aside glass">
-      <p>Select the faculty and the class type (theory/lab) you want to review. Your honest feedback helps improve teaching and labs!</p>
+      <h3>Guidelines</h3>
+      <p>Select the faculty and the class type (theory/lab) you want to evaluate. Feedback is strictly anonymous. Please provide honest, constructive, and respectful feedback to help enhance the teaching and learning experience.</p>
     </aside>
   </div>
   <script src="js/feedback.js"></script>
