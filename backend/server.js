@@ -11,40 +11,39 @@ const reportRoutes = require("./routes/reports");
 
 const app = express();
 
-
 // ===============================
-// ✅ CORS CONFIGURATION (IMPORTANT)
+// ✅ CORS CONFIGURATION (FIXED)
 // ===============================
 app.use(
-  cors({
-    origin: [
-      "http://localhost:5500",
-      "http://127.0.0.1:5500",
-      "http://localhost:5000",
-      "https://main.d1ev68no8puayt.amplifyapp.com/",
-      "http://cbit-it-feedback.ap-south-1.elasticbeanstalk.com/"
-      
-    ],
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
-  })
+cors({
+origin: [
+"http://localhost:5500",
+"http://127.0.0.1:5500",
+"http://localhost:5000",
+"https://main.d1ev68no8puayt.amplifyapp.com",
+"https://d2jukolqvoix3.cloudfront.net"
+],
+methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+allowedHeaders: ["Content-Type", "Authorization"],
+credentials: true,
+})
 );
 
+// ✅ Handle preflight requests (VERY IMPORTANT)
+app.options("*", cors());
 
 // ===============================
 // ✅ MIDDLEWARE
 // ===============================
 app.use(express.json());
 
-
 // ===============================
 // ✅ MONGODB CONNECTION
 // ===============================
 mongoose
-  .connect(process.env.MONGODB_URI)
-  .then(() => console.log("MongoDB Connected ✅"))
-  .catch((err) => console.log("MongoDB Error:", err));
-
+.connect(process.env.MONGODB_URI)
+.then(() => console.log("MongoDB Connected ✅"))
+.catch((err) => console.log("MongoDB Error:", err));
 
 // ===============================
 // ✅ ROUTES
@@ -54,14 +53,12 @@ app.use("/api/faculty", facultyRoutes);
 app.use("/api/feedback", feedbackRoutes);
 app.use("/api/reports", reportRoutes);
 
-
 // ===============================
 // ✅ HEALTH CHECK ROUTE
 // ===============================
 app.get("/", (req, res) => {
-  res.send("Feedback API Running 🚀");
+res.send("Feedback API Running 🚀");
 });
-
 
 // ===============================
 // ✅ PORT FIX FOR AWS
@@ -69,5 +66,5 @@ app.get("/", (req, res) => {
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () =>
-  console.log(`Server running on port ${PORT}`)
+console.log(`Server running on port ${PORT}`)
 );
