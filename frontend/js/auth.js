@@ -1,7 +1,7 @@
 // ===============================
 // API BASE URL (PRODUCTION)
 // ===============================
-const API_BASE = "https://d2jukolqvoix3.cloudfront.net";
+const API_BASE = "https://dzfmv8tmc552t.cloudfront.net";
 
 
 // ===============================
