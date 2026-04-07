@@ -20,7 +20,10 @@ app.use(
     origin: [
       "http://localhost:5500",
       "http://127.0.0.1:5500",
-      "http://localhost:5000"
+      "http://localhost:5000",
+      "https://main.d1ev68no8puayt.amplifyapp.com/",
+      "http://cbit-it-feedback.ap-south-1.elasticbeanstalk.com/"
+      
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,

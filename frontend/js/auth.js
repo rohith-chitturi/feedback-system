@@ -1,7 +1,7 @@
 // ===============================
 // API BASE URL (PRODUCTION)
 // ===============================
-const API_BASE = "http://cbit-it-feedback.ap-south-1.elasticbeanstalk.com/";
+const API_BASE = "https://d2jukolqvoix3.cloudfront.net";
 
 
 // ===============================
