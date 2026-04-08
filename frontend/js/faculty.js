@@ -1,4 +1,4 @@
-const API_BASE = 'https://d2jukolqvoix3.cloudfront.net';
+const API_BASE = 'https://dzfmv8tmc552t.cloudfront.net';
 const section = localStorage.getItem('section');
 
 // Demo avatar images
